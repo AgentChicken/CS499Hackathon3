@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+    <body>
+        <h2>
+            Current Data
+        </h2>
+        <p>Submissions containing non-numeric entries will be ignored.</p>
+        <p>
+            Inputs: {{ currentx }}
+        </p>
+        <p>
+            Outputs: {{ currentv }}
+        </p>
+        <form action="" method="post" name="submit">
+            <h2>Enter New Data</h2>
+            <p>Submissions containing non-numeric entries will be ignored.</p>
+            <p>
+                Please enter the route:
+                <br>
+                    {{ form.route }}
+                <br>
+            </p>
+            <p>
+                Please enter the direction:
+                <br>
+                    {{ form.direction }}
+                <br>
+            </p>
+            <p>
+                Please enter the day:
+                <br>
+                    {{ form.day }}
+                <br>
+            </p>
+            <p>
+                Please enter the time:
+                <br>
+                    {{ form.time }}
+                <br>
+            </p>
+            <p>
+                Please enter the traffic level:
+                <br>
+                    {{ form.traffic }}
+                <br>
+            </p>
+            <p>
+                {{ form.submit }}
+            </p>
+        </form>
+
+        <form action="" method="post" name="predict">
+            <h2>Predict Traffic</h2>
+            <p>
+                Please enter the route:
+                <br>
+                    {{ predict.p_route }}
+                <br>
+            </p>
+            <p>
+                Please enter the direction:
+                <br>
+                    {{ predict.p_direction }}
+                <br>
+            </p>
+            <p>
+                Please enter the day:
+                <br>
+                    {{ predict.p_day }}
+                <br>
+            </p>
+            <p>
+                Please enter the time:
+                <br>
+                    {{ predict.p_time }}
+                <br>
+            </p>
+            <p>
+                {{ predict.p_submit }}
+            </p>
+        </form>
+        <h3>
+            {{ result }}
+        </h3>
+    </body>
+</html>

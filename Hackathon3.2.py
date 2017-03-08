@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from sklearn import linear_model
 from flask_wtf import FlaskForm
+from sklearn.preprocessing import PolynomialFeatures
 from wtforms import SubmitField, IntegerField
 from wtforms.validators import DataRequired
 import sys
@@ -27,18 +28,19 @@ app = Flask(__name__)
 
 X = [[-sys.maxint, -sys.maxint, -sys.maxint, -sys.maxint]]
 vector = [-1]
+poly = PolynomialFeatures(degree=6)
 clf = linear_model.LinearRegression()
-clf.fit(X, vector)
+clf.fit(poly.fit_transform(X), vector)
 
 
 def commit(route, direction, day, time, traffic):
     X.append([route, direction, day, time])
     vector.append(traffic)
-    clf.fit(X, vector)
+    clf.fit(poly.fit_transform(X), vector)
 
 
 def conjecture(route, direction, day, time):
-    return clf.predict([route, direction, day, time])[0]
+    return clf.predict(poly.fit_transform([route, direction, day, time]))[0]
 
 
 def process_input(element):
